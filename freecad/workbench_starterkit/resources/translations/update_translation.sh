@@ -18,9 +18,9 @@
 #
 # NOTE: WORKFLOW
 # 0. Install Qt tools
-# 	Debian-based (e.g., Ubuntu): $ sudo apt-get install qttools5-dev-tools pyqt5-dev-tools
-# 	Fedora-based: $ sudo dnf install qt5-linguist qt5-devel
-# 	Arch-based: $ sudo pacman -S qt5-tools python-pyqt5
+# 	Debian-based (e.g., Ubuntu): $ sudo apt-get install qttools5-dev-tools pyqt6-dev-tools
+# 	Fedora-based: $ sudo dnf install qt6-linguist qt6-devel
+# 	Arch-based: $ sudo pacman -S qt6-tools python-pyqt6
 # 1. Make the script executable
 # 	$ chmod +x update_translation.sh
 # 2. Execute the script passing the locale code as first parameter
@@ -31,6 +31,9 @@
 # 4. If releasing with the script execute the script passing the locale code as first parameter
 # 	and use '-r' flag next
 # 	$ ./update_translation.sh es-ES -r
+#
+# The usage of `pylupdate6` is preferred over 'pylupdate5' when extracting text strings for
+# 	translation. 'pylupdate6' let us to use tr(string).
 #
 # --------------------------------------------------------------------------------------------------
 
@@ -55,7 +58,7 @@ get_strings() {
 	# Get translatable strings from ../ui/*.ui Qt Designer files
 	# lupdate ../ui/*.ui -ts uifiles.ts -no-obsolete
 	# Get translatable strings from ../../*.py Python files
-	pylupdate5 ../../*.py -ts pyfiles.ts -verbose
+	pylupdate6 ../../*.py -ts pyfiles.ts
 }
 
 delete_files() {

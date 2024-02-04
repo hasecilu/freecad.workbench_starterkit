@@ -7,7 +7,6 @@ WORKBENCH_CLASS_NAME = CoolWorkbench
 WORKBENCH_MENUTEXT = Cool workbench
 WORKBENCH_TOOLTIP = FreeCAD workbench to make cool parametric objects
 WORKBENCH_ICON = cool.svg
-WORKBENCH_TRANSLATION_CONTEXT = cool
 MAINTAINER = me
 EMAIL = me@foobar.com
 URL = https://foobar.com/me/coolWB
@@ -34,9 +33,6 @@ replace_strings:
 	sed -i 's/template_resource.svg/$(WORKBENCH_ICON)/g' freecad/workbench_starterkit/init_gui.py
 	@# Rename workbench icon
 	mv freecad/workbench_starterkit/resources/template_resource.svg freecad/workbench_starterkit/resources/$(WORKBENCH_ICON)
-	@# Rename context string for translation of workbench name
-	sed -i 's/starterkit/$(WORKBENCH_TRANSLATION_CONTEXT)/g' freecad/workbench_starterkit/init_gui.py
-	sed -i 's/starterkit/$(WORKBENCH_TRANSLATION_CONTEXT)/g' freecad/workbench_starterkit/resources/translations/workbench_starterkit_es-ES.ts
 	@# Rename workbench directory
 	mv freecad/workbench_starterkit freecad/$(WORKBENCH_DIR_NAME)
 	@# Update setup.py file
